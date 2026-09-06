@@ -9,19 +9,39 @@ headingTwo.classList.add("heading-hidden");
 headingThree.classList.add("heading-hidden");
 headingFour.classList.add("heading-hidden");
 
-// Setting the time of animations
+// Show the home heading when the page opens.
 setTimeout(function () {
     headingOne.classList.add("heading-visible");
 }, 200);
 
-setTimeout(function () {
-    headingTwo.classList.add("heading-visible");
-}, 400);
+// These functions check whether each heading has reached the screen.
+function showAboutHeading() {
+    const aboutPosition = headingTwo.getBoundingClientRect().top;
 
-setTimeout(function () {
-    headingThree.classList.add("heading-visible");
-}, 600);
+    if (aboutPosition < window.innerHeight - 80) {
+        headingTwo.classList.add("heading-visible");
+    }
+}
 
-setTimeout(function () {
-    headingFour.classList.add("heading-visible");
-}, 800);
+function showProjectsHeading() {
+    const projectsPosition = headingThree.getBoundingClientRect().top;
+
+    if (projectsPosition < window.innerHeight - 80) {
+        headingThree.classList.add("heading-visible");
+    }
+}
+
+function showContactHeading() {
+    const contactPosition = headingFour.getBoundingClientRect().top;
+
+    if (contactPosition < window.innerHeight - 80) {
+        headingFour.classList.add("heading-visible");
+    }
+}
+
+// Run the functions whenever the user scrolls.
+window.addEventListener("scroll", function () {
+    showAboutHeading();
+    showProjectsHeading();
+    showContactHeading();
+});
