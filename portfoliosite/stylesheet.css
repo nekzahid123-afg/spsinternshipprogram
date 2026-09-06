@@ -107,21 +107,33 @@ h3 {
 /* These two classes are added by index.js for the heading animation. */
 .heading-hidden {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateY(45px) scale(0.96);
 }
 
 .heading-visible {
-    opacity: 1;
-    transform: translateY(0);
+    animation: heading-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes heading-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(45px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .hero-description {
+    animation: text-reveal 0.9s ease 0.35s both;
     font-size: 18px;
     margin-bottom: 28px;
 }
 
 .hero-image img {
+    animation: image-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
     border: 8px solid white;
     border-radius: 50%;
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
@@ -132,6 +144,7 @@ h3 {
 }
 
 .button {
+    animation: text-reveal 0.8s ease 0.55s both;
     background-color: #0284c7;
     border-radius: 5px;
     color: white;
@@ -143,6 +156,31 @@ h3 {
 
 .button:hover {
     background-color: #0369a1;
+    transform: translateY(-3px);
+}
+
+@keyframes text-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes image-reveal {
+    from {
+        opacity: 0;
+        transform: translateX(55px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
 
 .section {

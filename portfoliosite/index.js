@@ -9,7 +9,7 @@ headingTwo.classList.add("heading-hidden");
 headingThree.classList.add("heading-hidden");
 headingFour.classList.add("heading-hidden");
 
-// Show the home heading when the page opens.
+// Show the home Page Heading at the first when the page opens.
 setTimeout(function () {
     headingOne.classList.add("heading-visible");
 }, 200);
@@ -39,7 +39,7 @@ function showContactHeading() {
     }
 }
 
-// Run the functions whenever the user scrolls.
+// Run the functions whenever the user scrolls down the page.
 window.addEventListener("scroll", function () {
     showAboutHeading();
     showProjectsHeading();
