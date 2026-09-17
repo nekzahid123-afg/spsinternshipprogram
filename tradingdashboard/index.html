@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trading Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <h1>Nexcore Trading Dashboard</h1>
+      <p id="reportDate"></p>
+      <div id="tickerTrack" aria-label="Market ticker"></div>
+    </header>
+
+    <main class="dashboard-grid">
+      <section class="panel price-panel">
+        <div class="panel-heading">
+          <div>
+            <h2>NXC</h2>
+            <strong id="livePrice"></strong>
+            <span id="liveChange"></span>
+          </div>
+          <div id="rangeButtons" class="range-buttons">
+            <button class="range-btn active" data-range="1D" type="button">
+              1D
+            </button>
+            <button class="range-btn" data-range="5D" type="button">5D</button>
+            <button class="range-btn" data-range="1M" type="button">1M</button>
+            <button class="range-btn" data-range="1Y" type="button">1Y</button>
+          </div>
+        </div>
+        <div class="chart-wrap"><canvas id="priceChart"></canvas></div>
+        <button id="refreshBtn" type="button">Refresh price</button>
+      </section>
+
+      <section class="panel stats-panel">
+        <h2>Market statistics</h2>
+        <dl id="statsGrid"></dl>
+        <div class="range-labels">
+          <span id="rangeLowLabel"></span><span id="rangeHighLabel"></span>
+        </div>
+        <div class="range-track"><span id="rangeDot"></span></div>
+      </section>
+
+      <section class="panel allocation-panel">
+        <h2>Sector allocation</h2>
+        <div class="chart-wrap"><canvas id="sectorChart"></canvas></div>
+        <div
+          id="sectorSummary"
+          class="sector-summary"
+          aria-label="Sector allocation details"
+        ></div>
+      </section>
+
+      <section class="panel news-panel">
+        <h2>Market news</h2>
+        <ul id="newsList"></ul>
+        <div class="news-summary">
+          <span>Market sentiment</span>
+          <strong class="sentiment-positive">Positive</strong>
+          <small>3 updates today</small>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
