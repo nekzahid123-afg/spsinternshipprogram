@@ -4,38 +4,77 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Trading Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <header class="dashboard-header">
-      <h1>Nexcore Trading Dashboard</h1>
-      <p id="reportDate"></p>
+  <body class="min-h-screen antialiased">
+    <header class="dashboard-header px-4 py-6 sm:px-6 lg:px-8">
+      <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">
+        Nexcore Trading Dashboard
+      </h1>
+      <p id="reportDate" class="mt-1 text-sm text-slate-400"></p>
       <div id="tickerTrack" aria-label="Market ticker"></div>
     </header>
 
-    <main class="dashboard-grid">
-      <section class="panel price-panel">
+    <main class="dashboard-grid px-4 py-6 sm:px-6 lg:px-8">
+      <section class="panel price-panel rounded-lg shadow-lg shadow-black/10">
         <div class="panel-heading">
           <div>
-            <h2>NXC</h2>
-            <strong id="livePrice"></strong>
+            <h2 class="text-lg font-semibold">NXC</h2>
+            <strong
+              id="livePrice"
+              class="text-2xl font-bold tracking-tight"
+            ></strong>
             <span id="liveChange"></span>
           </div>
-          <div id="rangeButtons" class="range-buttons">
-            <button class="range-btn active" data-range="1D" type="button">
+          <div
+            id="rangeButtons"
+            class="range-buttons inline-flex rounded-md shadow-sm"
+            role="group"
+            aria-label="Chart timeframe"
+          >
+            <button
+              class="range-btn active transition-colors duration-150 hover:bg-slate-800"
+              data-range="1D"
+              type="button"
+            >
               1D
             </button>
-            <button class="range-btn" data-range="5D" type="button">5D</button>
-            <button class="range-btn" data-range="1M" type="button">1M</button>
-            <button class="range-btn" data-range="1Y" type="button">1Y</button>
+            <button
+              class="range-btn transition-colors duration-150 hover:bg-slate-800"
+              data-range="5D"
+              type="button"
+            >
+              5D
+            </button>
+            <button
+              class="range-btn transition-colors duration-150 hover:bg-slate-800"
+              data-range="1M"
+              type="button"
+            >
+              1M
+            </button>
+            <button
+              class="range-btn transition-colors duration-150 hover:bg-slate-800"
+              data-range="1Y"
+              type="button"
+            >
+              1Y
+            </button>
           </div>
         </div>
         <div class="chart-wrap"><canvas id="priceChart"></canvas></div>
-        <button id="refreshBtn" type="button">Refresh price</button>
+        <button
+          id="refreshBtn"
+          class="rounded-md font-medium shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-amber-300"
+          type="button"
+        >
+          Refresh price
+        </button>
       </section>
 
-      <section class="panel stats-panel">
-        <h2>Market statistics</h2>
+      <section class="panel stats-panel rounded-lg shadow-lg shadow-black/10">
+        <h2 class="text-lg font-semibold">Market statistics</h2>
         <dl id="statsGrid"></dl>
         <div class="range-labels">
           <span id="rangeLowLabel"></span><span id="rangeHighLabel"></span>
@@ -43,8 +82,10 @@
         <div class="range-track"><span id="rangeDot"></span></div>
       </section>
 
-      <section class="panel allocation-panel">
-        <h2>Sector allocation</h2>
+      <section
+        class="panel allocation-panel rounded-lg shadow-lg shadow-black/10"
+      >
+        <h2 class="text-lg font-semibold">Sector allocation</h2>
         <div class="chart-wrap"><canvas id="sectorChart"></canvas></div>
         <div
           id="sectorSummary"
@@ -53,8 +94,8 @@
         ></div>
       </section>
 
-      <section class="panel news-panel">
-        <h2>Market news</h2>
+      <section class="panel news-panel rounded-lg shadow-lg shadow-black/10">
+        <h2 class="text-lg font-semibold">Market news</h2>
         <ul id="newsList"></ul>
         <div class="news-summary">
           <span>Market sentiment</span>
