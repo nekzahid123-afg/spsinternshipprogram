@@ -1,0 +1,358 @@
+:root {
+  --bg-dark: #0e1117;
+  --panel-bg: #161b22;
+  --line-clr: #21262d;
+  --txt-main: #c9d1d9;
+  --txt-bright: #f0f6fc;
+  --accent-gold: #e3b341;
+  --clr-green: #3fb950;
+  --clr-red: #f85149;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--txt-main);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.ticker-chip b {
+  color: #e6edf3;
+  font-weight: 600;
+  margin: 0 6px;
+}
+.ticker-chip {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
+  padding: 4px 10px;
+  background: #1c2128;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.ticker-chip .up {
+  color: var(--clr-green);
+}
+.ticker-chip .down {
+  color: var(--clr-red);
+}
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line-clr);
+  font-size: 13px;
+}
+.stat-row dt {
+  color: #8b949e;
+}
+.stat-row dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--txt-bright);
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+.news-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-clr);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.news-tag {
+  display: inline-block;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+.flash-up {
+  animation: flashGreen 0.6s ease;
+}
+@keyframes flashGreen {
+  0% {
+    color: var(--clr-green);
+  }
+  100% {
+    color: inherit;
+  }
+}
+
+.dashboard-header,
+.dashboard-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.dashboard-header {
+  border-bottom: 1px solid var(--line-clr);
+}
+.dashboard-header h1 {
+  color: var(--txt-bright);
+  margin: 0 0 6px;
+}
+.dashboard-header p {
+  margin: 0 0 18px;
+}
+#tickerTrack {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--line-clr);
+  padding: 20px;
+}
+.panel h2 {
+  color: var(--txt-bright);
+  margin-top: 0;
+}
+.panel-heading,
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chart-wrap {
+  height: 280px;
+  position: relative;
+}
+.range-btn {
+  background: transparent;
+  border: 1px solid var(--line-clr);
+  color: var(--txt-main);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.range-btn.active {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+#refreshBtn {
+  margin-top: 14px;
+  background: var(--accent-gold);
+  border: 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.range-track {
+  background: var(--line-clr);
+  height: 5px;
+  margin-top: 8px;
+  position: relative;
+}
+#rangeDot {
+  background: var(--accent-gold);
+  border-radius: 50%;
+  height: 11px;
+  position: absolute;
+  top: -3px;
+  width: 11px;
+}
+#newsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sector-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 18px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line-clr);
+  padding-top: 14px;
+}
+.sector-summary div,
+.news-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.sector-summary strong {
+  color: var(--txt-bright);
+}
+.sector-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+.sector-dot.cloud {
+  background: #e3b341;
+}
+.sector-dot.hardware {
+  background: #3fb950;
+}
+.sector-dot.services {
+  background: #1b2230;
+  border: 1px solid #596579;
+}
+.sector-dot.cash {
+  background: #f85149;
+}
+.news-copy {
+  flex: 1;
+}
+.news-copy small {
+  display: block;
+  color: #7d8a9e;
+  font-size: 10px;
+  margin-top: 5px;
+}
+.news-summary {
+  border-top: 1px solid var(--line-clr);
+  margin-top: 14px;
+  padding-top: 14px;
+  color: #7d8a9e;
+}
+.sentiment-positive {
+  color: var(--clr-green);
+  font-size: 12px;
+}
+.news-summary small {
+  color: #7d8a9e;
+}
+@media (max-width: 760px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+  .dashboard-header {
+    padding: 14px;
+  }
+  .panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+/* Core background depth gradient */
+body {
+  background-image:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(227, 179, 65, 0.06),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 100% 20%,
+      rgba(63, 185, 80, 0.05),
+      transparent 35%
+    );
+  background-attachment: fixed;
+}
+
+/* Ticker tape continuous scroll animation */
+@keyframes scrollTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Ticker dynamic text states */
+.ticker-chip {
+  color: #67758b;
+}
+.ticker-chip b {
+  color: #e6edf3;
+  font-weight: 600;
+  margin: 0 6px;
+}
+.up {
+  color: #3fb950;
+}
+.down {
+  color: #f85149;
+}
+
+/* Dynamic stat/news row formatting */
+.stat-row dt {
+  color: #7d8a9e;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+.stat-row dd {
+  font-weight: 600;
+}
+
+.news-row {
+  padding: 12px 0;
+}
+.news-row:first-child {
+  padding-top: 0;
+}
+.news-row:last-child {
+  padding-bottom: 0;
+}
+.news-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-right: 8px;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Flash effect on dynamic ticker updates */
+@keyframes flashGreen {
+  0% {
+    background-color: rgba(63, 185, 80, 0.25);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@keyframes flashRed {
+  0% {
+    background-color: rgba(248, 81, 73, 0.25);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.flash-up {
+  animation: flashGreen 0.8s ease-out;
+}
+.flash-down {
+  animation: flashRed 0.8s ease-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0c1017;
+}
+::-webkit-scrollbar-thumb {
+  background: #232b3a;
+  border-radius: 999px;
+}

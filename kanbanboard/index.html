@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Kanban Board</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <header class="page-header">
+        <div>
+            <p class="small-heading">PROJECT WORKSPACE</p>
+            <h1>My Kanban Board</h1>
+        </div>
+        <p class="header-text">Plan your work, then move each task forward.</p>
+    </header>
+
+    <main>
+        <section class="task-form-section" aria-labelledby="form-heading">
+            <h2 id="form-heading">Add a new task</h2>
+
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+
+                <div class="form-row">
+                    <label for="task-title">Task title</label>
+                    <input type="text" id="task-title" placeholder="For example: Design the home page" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" rows="3" placeholder="Add a short description"></textarea>
+                </div>
+
+                <div class="form-details">
+                    <div class="form-row">
+                        <label for="task-priority">Priority</label>
+                        <select id="task-priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="task-tag">Tag</label>
+                        <input type="text" id="task-tag" placeholder="Design, Study, Work...">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="task-date">Due date</label>
+                        <input type="date" id="task-date">
+                    </div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="submit-button">Add task</button>
+                    <button type="button" id="cancel-button" class="secondary-button" hidden>Cancel edit</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="board" aria-label="Kanban board">
+            <div class="board-column" data-status="todo">
+                <div class="column-heading">
+                    <h2>To Do</h2>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list" id="todo-list" aria-label="To do tasks"></div>
+            </div>
+
+            <div class="board-column" data-status="progress">
+                <div class="column-heading">
+                    <h2>In Progress</h2>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list" id="progress-list" aria-label="Tasks in progress"></div>
+            </div>
+
+            <div class="board-column" data-status="completed">
+                <div class="column-heading">
+                    <h2>Completed</h2>
+                    <span class="task-count">0</span>
+                </div>
+                <div class="task-list" id="completed-list" aria-label="Completed tasks"></div>
+            </div>
+        </section>
+    </main>
+
+    <template id="task-template">
+        <article class="task-card" draggable="true">
+            <div class="task-card-top">
+                <label class="complete-label">
+                    <input type="checkbox" class="complete-checkbox" aria-label="Mark task as completed">
+                    <span></span>
+                </label>
+                <div class="card-actions">
+                    <button type="button" class="edit-button" aria-label="Edit task">Edit</button>
+                    <button type="button" class="delete-button" aria-label="Delete task">Delete</button>
+                </div>
+            </div>
+            <h3 class="card-title"></h3>
+            <p class="card-description"></p>
+            <div class="card-info">
+                <span class="priority-tag"></span>
+                <span class="category-tag"></span>
+                <time class="due-date"></time>
+            </div>
+        </article>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>

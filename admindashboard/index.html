@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern Dashboard</title>
+ <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">M</span>Modern</a>
+    <div class="profile-card">
+      <div class="avatar"></div>
+      <div><strong>Nek Zahid Khan</strong><small>Administrator</small></div>
+      <button type="button">...</button>
+    </div>
+    <p class="menu-label">Workspace For Items</p>
+ <nav class="side-menu">
+  <a class="active" href="#">Overview</a>
+  <a href="#">Analytics</a>
+  <a href="#">Messages <b>8</b></a>
+  <a href="#">Projects</a>
+  <a href="#">Tasks</a>
+  <a href="#">Settings</a>
+</nav>
+    <div class="sidebar-help"><span>Need some help?</span><a href="#">Visit support center For more asssistance</a></div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+<button class="sidebar-toggle" id="menuButton">☰</button>
+<!-- Here I directly used the icon for search instead to write hex code -->
+<label class="search-box">🔍<input type="search" placeholder="Search..."></label>
+      <div class="top-actions">
+        <button type="button">?</button>
+        <button class="notification" type="button">&#9830;<b>3</b></button>
+        <div class="top-avatar"></div>
+        <div class="account"><strong>Sajjad Ali Khan</strong><small>Admin account</small></div>
+      <button class="chevron" type="button">⌄</button>
+      </div>
+    </header>
+
+    <section class="page-body">
+      <div class="heading-row">
+        <div>
+          <p class="breadcrumb">Pages <span>/</span> Dashboard</p>
+          <h1>Good morning, Nek Zahid<span>!</span></h1>
+          <p class="heading-note">Here is what is happening with your business today.</p>
+        </div><button class="refresh-button" id="refreshButton" type="button"><span>↻</span>Refresh data</button>
+      </div>
+
+      <div class="row g-3 stat-row">
+        <div class="col-sm-6 col-xl-3"><article class="stat-card blue-card"><div class="stat-icon">Revenue</div><span>Total revenue</span><strong>$84,254</strong><p><b>+12.5%</b> from last month</p><span class="sparkline" data-values="4,6,5,8,6,9,10"></span></article></div>
+        <div class="col-sm-6 col-xl-3"><article class="stat-card violet-card"><div class="stat-icon">Customers</div><span>New customers</span><strong>3,642</strong><p><b>+8.2%</b> from last month</p><span class="sparkline" data-values="3,4,4,5,6,6,7"></span></article></div>
+        <div class="col-sm-6 col-xl-3"><article class="stat-card orange-card"><div class="stat-icon">Conversion</div><span>Conversion rate</span><strong>6.84%</strong><p><b>+2.4%</b> from last month</p><span class="sparkline" data-values="5,5,6,5,6,6,7"></span></article></div>
+        <div class="col-sm-6 col-xl-3"><article class="stat-card green-card"><div class="stat-icon">Projects</div><span>Active projects</span><strong>268</strong><p><b>+18.1%</b> from last month</p><span class="sparkline" data-values="6,5,7,8,7,9,10"></span></article></div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-xl-8">
+          <section class="dashboard-card revenue-card">
+  <div class="card-heading">
+    <div><h2>Revenue overview</h2><p>Monthly earnings compared to last year</p></div>
+    <div class="period-switch"><button class="active" type="button">12 months</button><button type="button">30 days</button><button type="button">7 days</button></div>
+  </div>
+  <div class="revenue-total"><div><span>Total revenue</span><strong>$84,254.00</strong></div><p><b>↑ 12.5%</b> vs. $74,921 last year</p></div>
+  <canvas class="revenue-chart" data-current="12,15,13,18,16,20,22,19,24,21,26,29" data-previous="10,8,11,9,12,10,14,11,13,12,15,17"></canvas>
+</section>
+        </div>
+        <div class="col-xl-4">
+          <section class="dashboard-card traffic-card">
+            <div class="card-heading"><div><h2>Traffic sources</h2><p>Sessions by acquisition channel</p></div><button class="dots-button" type="button">...</button></div>
+            <div class="donut"><div><strong>68.4k</strong><span>Visits</span></div></div>
+            <div class="traffic-list">
+              <div><span><i class="dot purple"></i>Organic search</span><b>48.2%</b><small>32,950</small></div>
+              <div><span><i class="dot blue"></i>Direct</span><b>28.5%</b><small>19,460</small></div>
+              <div><span><i class="dot pink"></i>Social media</span><b>15.8%</b><small>10,808</small></div>
+              <div><span><i class="dot teal"></i>Referral</span><b>7.5%</b><small>5,128</small></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="row g-3 lower-row">
+        <div class="col-lg-5"><section class="dashboard-card performance-card"><div class="card-heading"><div><h2>Weekly performance</h2><p>Goal progress by day</p></div><span class="badge-soft">This week</span></div><div class="bar-chart"><div><i style="height:44%"></i><span>Mon</span></div><div><i style="height:65%"></i><span>Tue</span></div><div><i style="height:53%"></i><span>Wed</span></div><div><i style="height:84%"></i><span>Thu</span></div><div><i style="height:74%"></i><span>Fri</span></div><div><i style="height:38%"></i><span>Sat</span></div><div><i style="height:58%"></i><span>Sun</span></div></div></section></div>
+        <div class="col-lg-7"><section class="dashboard-card activity-card"><div class="card-heading"><div><h2>Recent activity</h2><p>Latest updates across your workspace</p></div><a href="#">View all</a></div><div class="activity-list"><div><i class="violet">+</i><p><strong>Olivia Martin</strong> added a new project <b>Website redesign</b><small>Just now</small></p><button type="button">...</button></div><div><i class="blue">$</i><p><strong>Payment received</strong> from Jackson Lee <b>$2,450.00</b><small>18 minutes ago</small></p><button type="button">...</button></div><div><i class="green">&#10003;</i><p><strong>Weekly report</strong> has been generated successfully<small>2 hours ago</small></p><button type="button">...</button></div></div></section></div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sparkline/2.1.2/jquery.sparkline.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
