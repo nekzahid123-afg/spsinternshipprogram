@@ -1,7 +1,8 @@
 {
   "functions": { "api/*.php": { "runtime": "vercel-php@0.7.3" } },
   "routes": [
-    { "src": "/(.*\\.(?:css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot|map))", "dest": "/$1" },
+    { "src": "/(.*\\.php)", "dest": "/api/index.php" },
+    { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
