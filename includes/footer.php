@@ -10,7 +10,6 @@
 </footer>
 
 <script src="<?php echo $base_url; ?>/assets/js/velzon/bootstrap.bundle.min.js"></script>
-<script src="<?php echo $base_url; ?>/assets/js/velzon/app.js"></script>
 <?php if (isset($page_scripts))
     echo $page_scripts; ?>
 </body>
