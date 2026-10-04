@@ -1,5 +1,8 @@
 <?php
-$base_url = '/Mysites/BMS';
+$request_path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$base_url = $request_path === '/Mysites/BMS' || strpos($request_path, '/Mysites/BMS/') === 0
+    ? '/Mysites/BMS'
+    : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
