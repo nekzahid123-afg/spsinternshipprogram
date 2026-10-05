@@ -444,7 +444,7 @@ $potential_performance = [
     }
 </style>
 
-<script src="<?php echo $base_url; ?>/velzon/assets/libs/chart.js/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
