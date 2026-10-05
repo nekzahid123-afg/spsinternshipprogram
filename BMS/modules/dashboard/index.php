@@ -77,8 +77,14 @@ require_once dirname(__DIR__, 2) . '/includes/header.php';
                 </div>
             </nav>
         </aside>
+        <button type="button" class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close dashboard navigation"></button>
 
         <main class="dashboard-main">
+            <button type="button" class="mobile-sidebar-toggle" id="mobileSidebarToggle"
+                aria-controls="dashboardSidebar" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                <span>Dashboard menu</span>
+            </button>
             <div class="dashboard-panel">
                 <div class="dashboard-header">
                     <div class="dashboard-title-wrap">
@@ -379,6 +385,11 @@ require_once dirname(__DIR__, 2) . '/includes/header.php';
         padding-right: 0.45rem;
     }
 
+    .mobile-sidebar-toggle,
+    .sidebar-backdrop {
+        display: none;
+    }
+
     .dashboard-panel {
         background: #fff;
         border: 1px solid #dfe3ea;
@@ -594,12 +605,45 @@ require_once dirname(__DIR__, 2) . '/includes/header.php';
             left: 0;
             bottom: 0;
             z-index: 1040;
-            width: 240px;
+            width: min(280px, 85vw);
             min-height: 0;
             border-radius: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
             box-shadow: 0 0.75rem 1.5rem rgba(15, 23, 42, 0.15);
             transform: translateX(-100%);
             transition: transform 0.2s ease;
+        }
+
+        .mobile-sidebar-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 0 0.75rem;
+            padding: 0.55rem 0.8rem;
+            border: 1px solid #c7d2fe;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--primary-brand-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            inset: 56px 0 0;
+            z-index: 1039;
+            width: 100%;
+            height: auto;
+            padding: 0;
+            border: 0;
+            background: rgba(15, 23, 42, 0.35);
+        }
+
+        .dashboard-sidebar.is-mobile-open + .sidebar-backdrop {
+            display: block;
         }
 
         .dashboard-sidebar.is-mobile-open {
@@ -644,17 +688,40 @@ require_once dirname(__DIR__, 2) . '/includes/header.php';
     document.addEventListener('DOMContentLoaded', function () {
         const sidebar = document.getElementById('dashboardSidebar');
         const toggle = document.getElementById('sidebarToggle');
+        const mobileToggle = document.getElementById('mobileSidebarToggle');
+        const backdrop = document.getElementById('sidebarBackdrop');
         const mobileQuery = window.matchMedia('(max-width: 575px)');
+
+        function setMobileSidebarOpen(isOpen) {
+            sidebar.classList.toggle('is-mobile-open', isOpen);
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            toggle.setAttribute('aria-label', isOpen ? 'Close sidebar' : 'Open sidebar');
+            mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        }
+
+        if (mobileQuery.matches) {
+            setMobileSidebarOpen(false);
+        }
 
         toggle.addEventListener('click', function () {
             if (mobileQuery.matches) {
-                sidebar.classList.toggle('is-mobile-open');
-                toggle.setAttribute('aria-expanded', String(sidebar.classList.contains('is-mobile-open')));
-                toggle.setAttribute('aria-label', sidebar.classList.contains('is-mobile-open') ? 'Close sidebar' : 'Open sidebar');
+                setMobileSidebarOpen(!sidebar.classList.contains('is-mobile-open'));
             } else {
                 sidebar.classList.toggle('is-collapsed');
                 toggle.setAttribute('aria-expanded', String(!sidebar.classList.contains('is-collapsed')));
                 toggle.setAttribute('aria-label', sidebar.classList.contains('is-collapsed') ? 'Expand sidebar' : 'Collapse sidebar');
+            }
+        });
+
+        mobileToggle.addEventListener('click', function () {
+            setMobileSidebarOpen(!sidebar.classList.contains('is-mobile-open'));
+        });
+        backdrop.addEventListener('click', function () {
+            setMobileSidebarOpen(false);
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && sidebar.classList.contains('is-mobile-open')) {
+                setMobileSidebarOpen(false);
             }
         });
 
@@ -665,7 +732,7 @@ require_once dirname(__DIR__, 2) . '/includes/header.php';
                 });
                 link.classList.add('active');
                 if (mobileQuery.matches) {
-                    sidebar.classList.remove('is-mobile-open');
+                    setMobileSidebarOpen(false);
                 }
             });
         });
