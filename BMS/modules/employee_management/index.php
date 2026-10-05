@@ -856,6 +856,8 @@ $render_action_menu = static function (string $employee_name) use ($base_url): v
         const filterSelects = Array.from(filterPanel.querySelectorAll('select'));
         const tabs = Array.from(document.querySelectorAll('.employee-tab'));
         const table = document.querySelector('.employee-table');
+        const mobileTableQuery = window.matchMedia('(max-width: 767.98px)');
+        let activeView = 'overview';
         const columnGroups = ['always', 'always', 'overview', 'overview', 'overview', 'organization', 'organization', 'organization', 'organization', 'organization', 'contact', 'contact', 'contact', 'contact', 'overview', 'always'];
         const views = {
             overview: ['Type', 'Job Status', 'Manager', 'Status'],
@@ -958,10 +960,11 @@ $render_action_menu = static function (string $employee_name) use ($base_url): v
         });
 
         function setColumnVisibility(viewName) {
+            activeView = viewName;
             const headers = Array.from(table.querySelectorAll('thead th'));
             headers.forEach(function (header, index) {
                 const group = header.getAttribute('data-group') || columnGroups[index];
-                const show = group === 'always' || group === viewName;
+                const show = mobileTableQuery.matches || group === 'always' || group === viewName;
                 table.querySelectorAll('tr').forEach(function (row) {
                     if (row.children[index]) {
                         row.children[index].style.display = show ? '' : 'none';
@@ -983,6 +986,9 @@ $render_action_menu = static function (string $employee_name) use ($base_url): v
         });
 
         setColumnVisibility('overview');
+        mobileTableQuery.addEventListener('change', function () {
+            setColumnVisibility(activeView);
+        });
     });
 </script>
 

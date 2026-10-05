@@ -372,14 +372,43 @@ $potential_performance = [
     }
 
     @media (max-width: 767.98px) {
+        .performance-page {
+            min-width: 0;
+            padding-right: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .performance-card,
+        .performance-section {
+            min-width: 0;
+            overflow: visible;
+        }
+
+        .performance-section {
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
+        }
+
         .performance-heading {
             align-items: flex-start;
             flex-direction: column;
             padding: 1.15rem 1rem 0.75rem;
         }
 
+        .performance-actions {
+            width: 100%;
+        }
+
         .chart-grid {
             grid-template-columns: 1fr;
+            min-width: 0;
+            padding-right: 0.6rem;
+            padding-left: 0.6rem;
+        }
+
+        .chart-panel,
+        .chart-canvas-wrap {
+            min-width: 0;
         }
 
         .performance-filter {
@@ -397,6 +426,20 @@ $potential_performance = [
         .assessment-grid,
         .potential-grid {
             grid-template-columns: 1fr;
+            min-width: 0;
+            padding: 1rem;
+        }
+
+        .criteria-grid {
+            padding-top: 0;
+        }
+
+        .monitor-box,
+        .criteria-box,
+        .assessment-box,
+        .potential-box {
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
     }
 </style>
